@@ -56,6 +56,10 @@ before_install:
 - chmod 600 ${SSH_KEY}
 
 script:
+  # focal-pgdg repo is moved under apt-archive.postgresql.org
+  - sudo echo "deb http://apt-archive.postgresql.org/pub/repos/apt focal-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql.list
+  # Add the official PostgreSQL repo key
+  - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
   - sudo apt update
   - sudo apt install -y qemu-user-static binfmt-support
   - docker-compose -f docker-compose.build.yml run pkgtools
