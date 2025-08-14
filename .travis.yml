@@ -1,4 +1,4 @@
-dist: focal
+dist: jammy
 
 if: branch =~ /^(master|((ngfw|waf)-)?release-\d+.\d)$/ AND type IN (push, cron, api) AND tag IS blank
 
@@ -44,9 +44,6 @@ env:
       VENDOR: untangle
     - ARCHITECTURE: amd64
       TYPE: azure/payg
-      VENDOR: untangle
-    - ARCHITECTURE: arm64
-      TYPE: qcow2
       VENDOR: untangle
 
 before_install:
