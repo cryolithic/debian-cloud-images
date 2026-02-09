@@ -10,8 +10,8 @@ ifeq ($(DISTRIBUTION),)
   DISTRIBUTION := $(shell cat $(PKGTOOLS_DIR)/resources/DISTRIBUTION)
 endif
 ifeq ($(DISTRIBUTION_REPOSITORY),)
-  _PUBVERSION := := $(cat $(PKGTOOLS_DIR)/resources/PUBVERSION)
-  _VERSION := $(cat $(PKGTOOLS_DIR)/resources/VERSION)
+  _PUBVERSION := $(shell cat $(PKGTOOLS_DIR)/resources/PUBVERSION)
+  _VERSION := $(shell cat $(PKGTOOLS_DIR)/resources/VERSION)
   DISTRIBUTION_REPOSITORY := $(shell cat $(PKGTOOLS_DIR)/resources/DISTRIBUTION | sed s/release-$(_PUBVERSION)/$(_VERSION)/)
 endif
 ifeq ($(PACKAGE_SERVER_IP),)
