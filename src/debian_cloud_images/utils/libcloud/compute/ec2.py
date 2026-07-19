@@ -29,6 +29,9 @@ class ExEC2NodeDriver(BaseEC2NodeDriver):
         endpoint = element.find(fixxpath('regionEndpoint', namespace=NAMESPACE)).text
         return ExEC2Region(name, endpoint)
 
+    def _wait_for_import_snapshot_completion(self, import_task_id, timeout=3600, interval=15):
+        return super()._wait_for_import_snapshot_completion(import_task_id, timeout=3600, interval=interval)
+
     def ex_copy_snapshot(self, snapshot, description):
         params = {
             'Action': 'CopySnapshot',
